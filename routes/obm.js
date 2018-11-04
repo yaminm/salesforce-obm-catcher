@@ -33,7 +33,7 @@ unwrapMessage = function(obj) {
     
     var o = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0];
     var recordFeildsValues = Object.keys(o).
-      reduce(((res, k) => ({ ...res, [k]: o[k][0] })), {})
+      reduce(function (res, k) { res[k] = o[k][0]; return res; }, {});
     //var mobilePhone = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0]['sf:mobilephone'][0];
 
     return {
