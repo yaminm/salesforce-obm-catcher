@@ -1,12 +1,19 @@
 var express = require('express');
 var _ = require("lodash");
 var router = express.Router();
+var recordModel = require('../schemas/record').RecordModel;
+
+
 
 router.post('/', function(req, res) {
   // get the obm as an object
   console.log('IN POST!');
   console.log('message :: ',JSON.stringify(req.body));
   var message = unwrapMessage(req.body);
+
+  recordModel.create({Id:recordId,FeildsValue:recordFeildsValues},function(err,small){
+    if (err) return handleError(err);
+  });
   
   console.log('message :: ',message);
   if (!_.isEmpty(message)) {
