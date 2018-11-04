@@ -31,7 +31,7 @@ unwrapMessage = function(obj) {
     var orgId = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].organizationid[0];
     var recordId = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0]['sf:id'][0];
     
-    let o = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0];
+    var o = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0];
     var recordFeildsValues = Object.keys(o).
       reduce(((res, k) => ({ ...res, [k]: o[k][0] })), {})
     //var mobilePhone = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0]['sf:mobilephone'][0];
