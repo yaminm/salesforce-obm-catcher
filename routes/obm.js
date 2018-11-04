@@ -39,7 +39,7 @@ unwrapMessage = function(obj) {
     return {
       orgId: orgId,
       recordId: recordId,
-      mobilePhone: mobilePhone
+      recordFeildsValues: recordFeildsValues
     };
 
   } catch (e) {
