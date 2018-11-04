@@ -30,7 +30,7 @@ unwrapMessage = function(obj) {
 
     var orgId = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].organizationid[0];
     var recordId = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0]['sf:id'][0];
-    
+  
     var o = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0];
     var recordFeildsValues = Object.keys(o).
       reduce(function (res, k) { res[k] = o[k][0]; return res; }, {});
@@ -40,18 +40,6 @@ unwrapMessage = function(obj) {
       recordId: recordId,
       recordFeildsValues: recordFeildsValues
     };
-
-
-    const Schema = mongoose.Schema;
-    const ObjectId = Schema.ObjectId;
-     
-    const BlogPost = new Schema({
-      author: ObjectId,
-      title: String,
-      body: String,
-      date: Date
-    });
-
 
   } catch (e) {
     console.log('Could not parse OBM XML', e);
