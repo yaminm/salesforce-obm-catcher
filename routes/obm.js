@@ -5,6 +5,7 @@ var router = express.Router();
 router.post('/', function(req, res) {
   // get the obm as an object
   var message = unwrapMessage(req.body);
+  console.log('message :: ',message);
   if (!_.isEmpty(message)) {
     // some something #awesome with message
     console.log(message);
