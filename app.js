@@ -6,6 +6,21 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var xmlParser = require('express-xml-bodyparser');
 
+const  mongoose = require('mongoose');
+var mongoDB = process.env.MONGODB_URI || 'mongodb://admin:iart6eBQ@ds151513.mlab.com:51513/dbmyobmmonitor';
+
+mongoose.connect(mongoDB,{ useNewUrlParser: true });
+// Get Mongoose to use the global promise library
+mongoose.Promise = global.Promise;
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
+
+
 var routes = require('./routes/index');
 var obm = require('./routes/obm');
 
