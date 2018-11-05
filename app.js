@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var xmlParser = require('express-xml-bodyparser');
 
-const  mongoose = require('mongoose');
+var  mongoose = require('mongoose');
 var mongoDB = process.env.MONGODB_URI || 'mongodb://admin:iart6eBQ@ds151513.mlab.com:51513/dbmyobmmonitor';
 
 mongoose.connect(mongoDB,{ useNewUrlParser: true });
