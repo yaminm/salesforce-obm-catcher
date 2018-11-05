@@ -11,7 +11,7 @@ router.post('/', function(req, res) {
   console.log('message :: ',JSON.stringify(req.body));
   var message = unwrapMessage(req.body);
 
-
+  console.log('record1');
   var record1 = new recordModel({Id:recordId,FeildsValue:recordFeildsValues});
   console.log('record1',record1);
     // save model to database
@@ -42,13 +42,19 @@ router.post('/', function(req, res) {
 // unwrap the xml and return object
 unwrapMessage = function(obj) {
   try {
-
+    console.log('1');
     var orgId = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].organizationid[0];
+    console.log('2');
     var recordId = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0]['sf:id'][0];
-  
+    console.log('3');
     var o = obj['soapenv:envelope']['soapenv:body'][0].notifications[0].notification[0].sobject[0];
+    console.log('4');
+
     var recordFeildsValues = Object.keys(o).
       reduce(function (res, k) { res[k] = o[k][0]; return res; }, {});
+      console.log('5');
+      console.log('recordFeildsValues:\n' + recordFeildsValues);
+
 
     return {
       orgId: orgId,
