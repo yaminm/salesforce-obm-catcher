@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
   console.log('record1');
   console.log('recordId:' + message.recordId);
   console.log('recordFeildsValues:' +message.recordFeildsValues );
-  var record1 = new recordModel({Id:message.recordId,FeildsValue:message.recordFeildsValues});
+  var record1 = new recordModel({Id:message.recordId,FeildsValue:JSON.stringify(message.recordFeildsValues)});
   console.log('record1',record1);
     // save model to database
     record1.save(function (err, record1) {
