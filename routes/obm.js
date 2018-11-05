@@ -13,6 +13,7 @@ router.post('/', function(req, res) {
 
 
   var record1 = new recordModel({Id:recordId,FeildsValue:recordFeildsValues});
+  console.log('record1',record1);
     // save model to database
     record1.save(function (err, record1) {
       if (err) return console.error(err);
@@ -28,11 +29,14 @@ router.post('/', function(req, res) {
       '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:out="http://soap.sforce.com/2005/09/outbound"><soapenv:Header/><soapenv:Body><out:notificationsResponse><out:Ack>true</out:Ack></out:notificationsResponse></soapenv:Body></soapenv:Envelope>'
     );
   } else {
+    console.log('message empty!');
+
     // return a 'false' Ack to Salesforce
     res.send(
       '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:out="http://soap.sforce.com/2005/09/outbound"><soapenv:Header/><soapenv:Body><out:notificationsResponse><out:Ack>false</out:Ack></out:notificationsResponse></soapenv:Body></soapenv:Envelope>'
     );
   }
+  console.log('finish processing ');
 });
 
 // unwrap the xml and return object
