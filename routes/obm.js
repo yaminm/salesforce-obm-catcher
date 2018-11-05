@@ -11,14 +11,18 @@ router.post('/', function(req, res) {
   console.log('message :: ',JSON.stringify(req.body));
   var message = unwrapMessage(req.body);
 
-  recordModel.create({Id:recordId,FeildsValue:recordFeildsValues},function(err,small){
-    if (err) return handleError(err);
-  });
+
+  var record1 = new recordModel({Id:recordId,FeildsValue:recordFeildsValues});
+    // save model to database
+    record1.save(function (err, record1) {
+      if (err) return console.error(err);
+      console.log(record1.Id + " saved to bookstore collection.");
+    });
   
   console.log('message :: ',message);
   if (!_.isEmpty(message)) {
     // some something #awesome with message
-    console.log(message);
+    console.log('message not empty!');
     // return a 'true' Ack to Salesforce
     res.send(
       '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:out="http://soap.sforce.com/2005/09/outbound"><soapenv:Header/><soapenv:Body><out:notificationsResponse><out:Ack>true</out:Ack></out:notificationsResponse></soapenv:Body></soapenv:Envelope>'
