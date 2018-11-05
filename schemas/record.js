@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-var recordSchema = Schema({
-    id: { type: String },
+var recordSchema = mongoose.Schema({
+    Id: { type: String },
     FeildsValue: { type: String }
 })
 
