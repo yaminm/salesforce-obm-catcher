@@ -15,5 +15,5 @@ recordSchema.statics.recordlist = function(cb) {
     });
 };
 
-var recordModel = mongoose.model( 'record', recordSchema,Records);
+var recordModel = mongoose.model( 'record', recordSchema,'Records');
 module.exports = {RecordModel:recordModel};
