@@ -15,11 +15,11 @@ var recordModel = mongoose.model( 'record', recordSchema,'Records');
 
 
 
-router.post('/', function(req, res) {
-  // get the obm as an object
+router.post('/:localSystem', function(req, res) {
+
   console.log('IN POST!');
   console.log('message :: ',JSON.stringify(req.body));
-  var localSystem = req.param('localSystem');
+  var localSystem = req.params.localSystem;
   var message = unwrapMessage(req.body);
 
   console.log('recordId:' + message.recordId);
