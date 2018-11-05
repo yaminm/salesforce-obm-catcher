@@ -1,7 +1,14 @@
 var express = require('express');
 var _ = require("lodash");
 var router = express.Router();
-var recordModel = require('../schemas/record').RecordModel;
+//var recordModel = require('../schemas/record').RecordModel;
+
+var mongoose = require('mongoose');
+var recordSchema = mongoose.Schema({
+  Id: { type: String },
+  FeildsValue: { type: String }
+})
+var recordModel = mongoose.model( 'record', recordSchema,'Records');
 
 
 
