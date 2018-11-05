@@ -23,11 +23,12 @@ router.post('/', function(req, res) {
   var message = unwrapMessage(req.body);
 
   console.log('recordId:' + message.recordId);
+
   var record1 = new recordModel({Id:message.recordId,
                                  FeildsValue:JSON.stringify(message.recordFeildsValues),
                                  orgId:message.orgId,
                                  localSystem:localSystem,
-                                 envURL:envURL});
+                                 envURL:message.envURL});
     // save model to database
     record1.save(function (err, record1) {
       if (err) return console.error(err);
